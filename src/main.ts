@@ -15,8 +15,8 @@ async function serverInit() {
   try {
     const app = await NestFactory.create(AppModule);
     const swaggerConfig = new DocumentBuilder()
-      .setTitle('Tina-api')
-      .setDescription('The api for Tina app')
+      .setTitle('DevBrewer Api')
+      .setDescription("It's an api to proivide data to Brewery software tools")
       .setContact(
         'Marcio Ricardo Fornazari Tiene',
         'https://www.linkedin.com/in/marcio-fornazari-tiene-940070193/',
@@ -24,7 +24,7 @@ async function serverInit() {
       )
       .setLicense(
         'MIT',
-        'https://github.com/Marcio-Tiene/tina-api/blob/main/LICENSE',
+        'https://github.com/Marcio-Tiene/dev-brewer-api/blob/main/LICENSE',
       )
       .setVersion('1.0')
 
@@ -39,7 +39,7 @@ async function serverInit() {
       swaggerOptions: {
         persistAuthorization: true,
       },
-      customSiteTitle: 'Tina Api',
+      customSiteTitle: 'DevBrewer Api',
     };
 
     const document = SwaggerModule.createDocument(

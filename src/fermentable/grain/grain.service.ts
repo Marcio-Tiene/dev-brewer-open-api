@@ -13,21 +13,7 @@ export class GrainService {
   async create(
     createFermentableDto: CreateFermentableDto,
   ): Promise<GrainDocument> {
-    const createdGrain = new this.grainModel({
-      name: 'Acid Malt',
-      potential: 1.027,
-      yield: 0.587,
-      'coarse-fine-diff': 0.015,
-      moisture: 0.04,
-      color: 3,
-      'recommend-mash': true,
-      'add-after-boil': false,
-      'diastatic-power': 0,
-      'max-in-batch': 0.1,
-      protein: 0.06,
-      notes:
-        'Acid malt contains acids from natural lactic acids. Used by German brewers to adjust malt PH without chemicals to adhere to German purity laws. Also enhances the head retention.',
-    });
+    const createdGrain = new this.grainModel(createFermentableDto);
 
     return await createdGrain.save();
   }

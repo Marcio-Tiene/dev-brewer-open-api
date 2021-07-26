@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, PaginateModel, PaginateResult } from 'mongoose';
 import { CreateFermentableDto } from '../dto/create-fermentable.dto';
 import { UpdateFermentableDto } from '../dto/update-fermentable.dto';
 import { Grain, GrainDocument } from './grain.schema';
@@ -9,7 +9,7 @@ import insertedGrains from '../../InitialData/Fermentables/grains';
 @Injectable()
 export class GrainService {
   constructor(
-    @InjectModel(Grain.name) private grainModel: Model<GrainDocument>,
+    @InjectModel(Grain.name) private grainModel: PaginateModel<GrainDocument>,
   ) {}
   igrains = insertedGrains;
   async create(
@@ -20,8 +20,11 @@ export class GrainService {
     return await createdGrain.save();
   }
 
-  async findAll(): Promise<CreateFermentableDto[]> {
-    return this.grainModel.find().exec();
+  async findAll({ limit, page }): Promise<PaginateResult<GrainDocument>> {
+    return await this.grainModel.paginate({
+      limit: Number(limit),
+      page: Number(page),
+    });
   }
 
   findOne(_id: string) {

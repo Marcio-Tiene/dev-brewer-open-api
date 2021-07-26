@@ -4,12 +4,14 @@ import { Model } from 'mongoose';
 import { CreateFermentableDto } from '../dto/create-fermentable.dto';
 import { UpdateFermentableDto } from '../dto/update-fermentable.dto';
 import { Grain, GrainDocument } from './grain.schema';
+import insertedGrains from '../../InitialData/Fermentables/grains';
 
 @Injectable()
 export class GrainService {
   constructor(
     @InjectModel(Grain.name) private grainModel: Model<GrainDocument>,
   ) {}
+  igrains = insertedGrains;
   async create(
     createFermentableDto: CreateFermentableDto,
   ): Promise<GrainDocument> {
@@ -18,7 +20,7 @@ export class GrainService {
     return await createdGrain.save();
   }
 
-  findAll(): Promise<CreateFermentableDto[]> {
+  async findAll(): Promise<CreateFermentableDto[]> {
     return this.grainModel.find().exec();
   }
 

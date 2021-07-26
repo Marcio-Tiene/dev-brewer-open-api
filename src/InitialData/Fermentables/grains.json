@@ -1,4 +1,4 @@
-[
+{"grains": [
   {
     "name": "Acid Malt",
     "potential": 1.027,
@@ -895,4 +895,4 @@
     "protein": 0.145,
     "notes": "White wheat gives a malty flavor not available from raw wheat."
   }
-]
+]}

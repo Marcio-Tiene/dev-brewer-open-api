@@ -2,8 +2,8 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 import { MongooseModule } from '@nestjs/mongoose';
-import { ApiKeyGuard } from './api-key.guard';
-import { FermentableModule } from './fermentable/fermentable.module';
+import { ApiKeyGuard } from './guards/api-key.guard';
+import { FermentableModule } from './modules/fermentable/fermentable.module';
 
 @Module({
   imports: [

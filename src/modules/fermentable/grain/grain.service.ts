@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { CreateFermentableDto } from '../dto/create-fermentable.dto';
 import { UpdateFermentableDto } from '../dto/update-fermentable.dto';
 import { Grain, GrainDocument } from './grain.schema';
-import insertedGrains from '../../InitialData/Fermentables/grains';
+import insertedGrains from '../../../InitialData/Fermentables/grains';
 import { Model } from 'mongoose';
 
 @Injectable()

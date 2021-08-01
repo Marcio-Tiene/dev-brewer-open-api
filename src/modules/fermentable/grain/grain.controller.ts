@@ -8,25 +8,30 @@ import {
   Delete,
   UseInterceptors,
   CacheInterceptor,
+  Inject,
+  UseGuards,
 } from '@nestjs/common';
 import { GrainService } from './grain.service';
 import { CreateFermentableDto } from '../dto/create-fermentable.dto';
 import { UpdateFermentableDto } from '../dto/update-fermentable.dto';
 import { ApiExcludeEndpoint, ApiSecurity, ApiTags } from '@nestjs/swagger';
-import * as dotenv from 'dotenv';
+import { AdminKeyGuard } from 'src/guards/admin-key.guard';
 
-const data = dotenv.config();
-
-const apiKey = data.parsed.PUBLIC_API_KEY_NAME;
+const { PUBLIC_API_KEY_NAME, ADMIN_API_KEY_NAME, NODE_ENV } = process.env;
+const isProdEnv = NODE_ENV === 'production';
 
 @ApiTags('Fermentables/Grains')
-@ApiSecurity(apiKey)
-@Controller('fermentables/grains')
+@ApiSecurity(PUBLIC_API_KEY_NAME)
+@Controller()
 @UseInterceptors(CacheInterceptor)
 export class GrainController {
-  constructor(private readonly grainService: GrainService) {}
+  constructor(
+    @Inject(GrainService) private readonly grainService: GrainService,
+  ) {}
 
-  @ApiExcludeEndpoint()
+  @ApiExcludeEndpoint(isProdEnv)
+  @UseGuards(AdminKeyGuard)
+  @ApiSecurity(ADMIN_API_KEY_NAME)
   @Post()
   create(@Body() createFermentableDto: CreateFermentableDto) {
     return this.grainService.create(createFermentableDto);
@@ -34,6 +39,7 @@ export class GrainController {
 
   @Get()
   findAll() {
+    console.log(process.env);
     return this.grainService.findAll();
   }
 
@@ -41,7 +47,9 @@ export class GrainController {
   findOne(@Param('id') id: string) {
     return this.grainService.findOne(id);
   }
-  @ApiExcludeEndpoint()
+  @ApiExcludeEndpoint(isProdEnv)
+  @UseGuards(AdminKeyGuard)
+  @ApiSecurity(ADMIN_API_KEY_NAME)
   @Patch(':id')
   update(
     @Param('id') id: string,
@@ -49,7 +57,9 @@ export class GrainController {
   ) {
     return this.grainService.update(id, updateFermentableDto);
   }
-  @ApiExcludeEndpoint()
+  @ApiExcludeEndpoint(isProdEnv)
+  @UseGuards(AdminKeyGuard)
+  @ApiSecurity(ADMIN_API_KEY_NAME)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.grainService.remove(id);

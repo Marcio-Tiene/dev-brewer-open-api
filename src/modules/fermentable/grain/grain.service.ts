@@ -5,11 +5,12 @@ import { UpdateFermentableDto } from '../dto/update-fermentable.dto';
 import { Grain, GrainDocument } from './grain.schema';
 import insertedGrains from '../../../InitialData/Fermentables/grains';
 import { Model } from 'mongoose';
+import { ApiRequestTimeoutResponse } from '@nestjs/swagger';
 
 @Injectable()
 export class GrainService {
   constructor(
-    @InjectModel(Grain.name) private grainModel: Model<GrainDocument>,
+    @InjectModel(Grain.name) private readonly grainModel: Model<GrainDocument>,
   ) {}
   igrains = insertedGrains;
   async create(
@@ -21,7 +22,9 @@ export class GrainService {
   }
 
   async findAll(): Promise<GrainDocument[]> {
-    return await this.grainModel.find();
+    const grains = await this.grainModel.find();
+    console.log(grains.length);
+    return grains;
   }
 
   findOne(_id: string) {
@@ -36,5 +39,9 @@ export class GrainService {
 
   remove(_id: string) {
     return this.grainModel.findOneAndDelete({ _id }).exec();
+  }
+
+  async insertMany(grains: Grain[]) {
+    return await this.grainModel.insertMany(grains);
   }
 }

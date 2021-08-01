@@ -39,7 +39,6 @@ export class GrainController {
 
   @Get()
   findAll() {
-    console.log(process.env);
     return this.grainService.findAll();
   }
 

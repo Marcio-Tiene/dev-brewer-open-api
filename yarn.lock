@@ -909,20 +909,6 @@
     "@types/bson" "*"
     "@types/node" "*"
 
-"@types/mongoose-paginate@^5.0.10":
-  version "5.0.10"
-  resolved "https://registry.yarnpkg.com/@types/mongoose-paginate/-/mongoose-paginate-5.0.10.tgz#c8980cb199b5144b7babb2ff5a4c3b1f7a8d60af"
-  integrity sha512-aTbcCQZkdBNAu1e9P0rChBMDoIC592xu+rTIWzGn8gRq7xWOnJfG3hADiCfhXvqyNzXRVMw2UsDN7UtNiktzFA==
-  dependencies:
-    "@types/mongoose" "^5.10.5"
-
-"@types/mongoose@^5.10.5":
-  version "5.11.97"
-  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-5.11.97.tgz#80b0357f3de6807eb597262f52e49c3e13ee14d8"
-  integrity sha512-cqwOVYT3qXyLiGw7ueU2kX9noE8DPGRY6z8eUxudhXY8NZ7DMKYAxyZkLSevGfhCX3dO/AoX5/SO9lAzfjon0Q==
-  dependencies:
-    mongoose "*"
-
 "@types/node@*":
   version "16.4.1"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.4.1.tgz#9fad171a5b701613ee8a6f4ece3c88b1034b1b03"
@@ -1522,11 +1508,6 @@ bl@^4.0.3, bl@^4.1.0:
     buffer "^5.5.0"
     inherits "^2.0.4"
     readable-stream "^3.4.0"
-
-bluebird@3.0.5:
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.0.5.tgz#2ff9d07c9b3edb29d6d280fe07528365e7ecd392"
-  integrity sha1-L/nQfJs+2ynW0oD+B1KDZefs05I=
 
 bluebird@3.5.1:
   version "3.5.1"
@@ -4173,14 +4154,7 @@ mongoose-legacy-pluralize@1.0.2:
   resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
-mongoose-paginate@^5.0.3:
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/mongoose-paginate/-/mongoose-paginate-5.0.3.tgz#d7ae49ed5bf64f1f7af7620ea865b67058c55371"
-  integrity sha1-165J7Vv2Tx9692IOqGW2cFjFU3E=
-  dependencies:
-    bluebird "3.0.5"
-
-mongoose@*, mongoose@^5.13.3:
+mongoose@^5.13.3:
   version "5.13.3"
   resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.13.3.tgz#42cb40207bbcaca9c6fa94b0a8c0a38181c1965e"
   integrity sha512-q+zX6kqHAvwxf5speMWhq6qF4vdj+x6/kfD5RSKdZKNm52yGmaUygN+zgrtQjBZPFEzG0B3vF6GP0PoAGadE+w==

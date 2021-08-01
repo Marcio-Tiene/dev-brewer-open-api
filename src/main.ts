@@ -9,7 +9,7 @@ import {
 } from '@nestjs/swagger';
 import * as helmet from 'helmet';
 
-const { PORT } = process.env;
+const { PORT, API_KEY_NAME } = process.env;
 
 async function serverInit() {
   try {
@@ -27,7 +27,10 @@ async function serverInit() {
         'https://github.com/Marcio-Tiene/dev-brewer-api/blob/main/LICENSE',
       )
       .setVersion('1.0')
-
+      .addApiKey(
+        { type: 'apiKey', name: API_KEY_NAME, in: 'header' },
+        API_KEY_NAME,
+      )
       .build();
 
     const swaggerDocumentOptions: SwaggerDocumentOptions = {

@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
 import { GrainModule } from './grain/grain.module';
 
 @Module({

@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { APP_GUARD } from '@nestjs/core';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ApiKeyGuard } from './api-key.guard';
 import { FermentableModule } from './fermentable/fermentable.module';
 
 @Module({
@@ -9,5 +11,6 @@ import { FermentableModule } from './fermentable/fermentable.module';
     MongooseModule.forRoot(process.env.MONGODB),
     FermentableModule,
   ],
+  providers: [{ provide: APP_GUARD, useClass: ApiKeyGuard }],
 })
 export class AppModule {}

@@ -1,7 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ApiProperty } from '@nestjs/swagger';
 import { Document } from 'mongoose';
-import * as moogoosePaginate from 'mongoose-paginate';
 
 export type FermentableDocument = Fermentable & Document;
 
@@ -56,5 +55,4 @@ export class Fermentable {
   notes: string;
 }
 
-export const FermentableSchema =
-  SchemaFactory.createForClass(Fermentable).plugin(moogoosePaginate);
+export const FermentableSchema = SchemaFactory.createForClass(Fermentable);

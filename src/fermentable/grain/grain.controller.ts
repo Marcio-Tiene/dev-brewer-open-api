@@ -12,15 +12,15 @@ import {
 import { GrainService } from './grain.service';
 import { CreateFermentableDto } from '../dto/create-fermentable.dto';
 import { UpdateFermentableDto } from '../dto/update-fermentable.dto';
-import {
-  ApiExcludeEndpoint,
-  ApiParam,
-  ApiQuery,
-  ApiTags,
-} from '@nestjs/swagger';
-import { link } from 'fs';
+import { ApiExcludeEndpoint, ApiSecurity, ApiTags } from '@nestjs/swagger';
+import * as dotenv from 'dotenv';
+
+const data = dotenv.config();
+
+const apiKey = data.parsed.API_KEY_NAME;
 
 @ApiTags('Fermentables/Grains')
+@ApiSecurity(apiKey)
 @Controller('fermentables/grains')
 @UseInterceptors(CacheInterceptor)
 export class GrainController {
@@ -33,10 +33,8 @@ export class GrainController {
   }
 
   @Get()
-  @ApiQuery({ name: 'limit', required: false, example: '1000' })
-  @ApiQuery({ name: 'page', required: false, example: '1' })
-  findAll(@Param('limit') limit: string, @Param('page') page: string) {
-    return this.grainService.findAll({ limit, page });
+  findAll() {
+    return this.grainService.findAll();
   }
 
   @Get(':id')

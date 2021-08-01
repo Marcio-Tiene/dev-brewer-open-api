@@ -23,7 +23,7 @@ export class GrainService {
 
   async findAll(): Promise<GrainDocument[]> {
     const grains = await this.grainModel.find();
-    console.log(grains.length);
+
     return grains;
   }
 

@@ -1,14 +1,11 @@
-import { Command, Positional } from 'nestjs-command';
+import { Command } from 'nestjs-command';
 import { Inject, Injectable } from '@nestjs/common';
 
-import { Grain, GrainDocument } from './grain.schema';
-import { Model } from 'mongoose';
-import { InjectModel } from '@nestjs/mongoose';
 import grains from 'src/InitialData/Fermentables/grains';
 import { GrainService } from './grain.service';
 
 @Injectable()
-export class GrainCommand {
+export class GrainSeed {
   constructor(
     @Inject(GrainService) private readonly grainService: GrainService,
   ) {}

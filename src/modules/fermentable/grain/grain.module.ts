@@ -4,7 +4,7 @@ import { GrainController } from './grain.controller';
 import { Grain, GrainSchema } from './grain.schema';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CommandModule } from 'nestjs-command';
-import { GrainCommand } from './grain.command';
+import { GrainSeed } from './grain.seed';
 
 @Module({
   imports: [
@@ -13,7 +13,7 @@ import { GrainCommand } from './grain.command';
     CommandModule,
   ],
   controllers: [GrainController],
-  providers: [GrainService, GrainCommand],
+  providers: [GrainService, GrainSeed],
   exports: [GrainModule],
 })
 export class GrainModule {}

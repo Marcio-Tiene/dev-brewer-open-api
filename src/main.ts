@@ -9,7 +9,7 @@ import {
 } from '@nestjs/swagger';
 import * as helmet from 'helmet';
 
-const { PORT, API_KEY_NAME } = process.env;
+const { PORT, PUBLIC_API_KEY_NAME } = process.env;
 
 async function serverInit() {
   try {
@@ -28,8 +28,8 @@ async function serverInit() {
       )
       .setVersion('1.0')
       .addApiKey(
-        { type: 'apiKey', name: API_KEY_NAME, in: 'header' },
-        API_KEY_NAME,
+        { type: 'apiKey', name: PUBLIC_API_KEY_NAME, in: 'header' },
+        PUBLIC_API_KEY_NAME,
       )
       .build();
 

@@ -17,7 +17,7 @@ import * as dotenv from 'dotenv';
 
 const data = dotenv.config();
 
-const apiKey = data.parsed.API_KEY_NAME;
+const apiKey = data.parsed.PUBLIC_API_KEY_NAME;
 
 @ApiTags('Fermentables/Grains')
 @ApiSecurity(apiKey)

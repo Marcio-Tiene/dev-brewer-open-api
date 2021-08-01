@@ -64,7 +64,15 @@ $ yarn test:e2e
 # test coverage
 $ yarn test:cov
 ```
+## Seeding initial data
 
+Modules may have a seed command avaliable, to check it go to module folder an look for a file named "module name".seed.ts
+check for @Comander property eg.: command: 'seed:grains',
+
+and run comand like 
+```bash
+yarn run:command seed:grains
+```
 ## Support
 
 

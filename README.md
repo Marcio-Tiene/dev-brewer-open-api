@@ -67,9 +67,9 @@ $ yarn test:cov
 ## Seeding initial data
 
 Modules may have a seed command avaliable, to check it go to module folder an look for a file named "module name".seed.ts
-check for @Comander property eg.: command: 'seed:grains',
+check for @Command property command eg.: command: 'seed:grains',
 
-and run comand like 
+and run comand like this
 ```bash
 yarn run:command seed:grains
 ```

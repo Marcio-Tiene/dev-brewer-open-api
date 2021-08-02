@@ -8,9 +8,9 @@ It's an api to proivide data to Brewery software tools
 
 ## How to create a mongo container to DevBrewerApi
 
-1. Make sure you have [Docker](https://www.docker.com/get-started) installed.
-2. On `.env` file add the  Variables like the `.env.sample`.
-3. If it's the first time you run this container you'll need to run
+1. Make sure you have [Docker](https://www.docker.com/get-started) and [Docker Compose](https://docs.docker.com/compose/) installed.
+2. Rename `.env.sample` file to `.env` only. Then if you want, change the variables values to your needs.
+3. If it's the first time you run this container you'll need to run:
 
   ```bash
   #create netework first 
@@ -50,7 +50,10 @@ $ yarn start:dev
 
 # production mode
 $ yarn start:prod
+
 ```
+
+### - Now you can go to localhost:3000/v1/api and check the open api documentation and playground.
 
 ## Test
 
@@ -64,18 +67,25 @@ $ yarn test:e2e
 # test coverage
 $ yarn test:cov
 ```
+
 ## Seeding initial data
 
-Modules may have a seed command avaliable, to check it go to module folder an look for a file named "module name".seed.ts
-check for @Command property command eg.: command: 'seed:grains',
+Modules may have a seed command avaliable, to check it, go in the module folder and look for a file named "module name".seed.ts, then search for @Command decorator property named 'command' eg.:
 
-and run comand like this
+```javascript
+// src/modules/fermentable/grain/grain.seed.ts
+@Command({
+command: 'seed:grains', ...}
+
+```
+
+and run the script with the value of the command like this:
 
 ```bash
 yarn run:command seed:grains
 ```
-## Support
 
+## Support
 
 ## Stay in touch
 

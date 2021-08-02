@@ -4,7 +4,7 @@ import { Document } from 'mongoose';
 
 export type FermentableDocument = Fermentable & Document;
 
-@Schema()
+@Schema({ timestamps: true, validateBeforeSave: true })
 export class Fermentable {
   @ApiProperty()
   @Prop()

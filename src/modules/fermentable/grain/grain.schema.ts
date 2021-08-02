@@ -4,7 +4,7 @@ import { Fermentable } from '../fermentable.schema';
 
 export type GrainDocument = Grain & Document;
 
-@Schema()
+@Schema({ timestamps: true, validateBeforeSave: true })
 export class Grain extends Fermentable {}
 
 export const GrainSchema = SchemaFactory.createForClass(Grain);

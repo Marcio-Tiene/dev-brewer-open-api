@@ -1,8 +1,11 @@
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { Observable } from 'rxjs';
 
-const apiKeyHeader = process.env.ADMIN_API_KEY_NAME;
-const apiKey = process.env.ADMIN_API_KEY_VALUE;
+import * as dotenv from 'dotenv';
+const data = dotenv.config();
+
+const apiKeyHeader = data.parsed.ADMIN_API_KEY_NAME;
+const apiKey = data.parsed.ADMIN_API_KEY_VALUE;
 
 @Injectable()
 export class AdminKeyGuard implements CanActivate {

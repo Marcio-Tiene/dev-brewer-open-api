@@ -13,13 +13,6 @@ export class GrainService {
     @InjectModel(Grain.name) private readonly grainModel: Model<GrainDocument>,
   ) {}
   igrains = insertedGrains;
-  async create(
-    createFermentableDto: CreateFermentableDto,
-  ): Promise<GrainDocument> {
-    const createdGrain = new this.grainModel(createFermentableDto);
-
-    return await createdGrain.save();
-  }
 
   async findAll(): Promise<GrainDocument[]> {
     const grains = await this.grainModel.find();
@@ -29,6 +22,14 @@ export class GrainService {
 
   findOne(_id: string) {
     return this.grainModel.findById(_id).exec();
+  }
+
+  async create(
+    createFermentableDto: CreateFermentableDto,
+  ): Promise<GrainDocument> {
+    const createdGrain = new this.grainModel(createFermentableDto);
+
+    return await createdGrain.save();
   }
 
   update(_id: string, updateFermentableDto: UpdateFermentableDto) {

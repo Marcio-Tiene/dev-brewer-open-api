@@ -46,6 +46,7 @@ export class GrainController {
   findOne(@Param('id') id: string) {
     return this.grainService.findOne(id);
   }
+
   @ApiExcludeEndpoint(isProdEnv)
   @UseGuards(AdminKeyGuard)
   @ApiSecurity(ADMIN_API_KEY_NAME)

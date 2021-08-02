@@ -14,13 +14,13 @@ export class GrainService {
   ) {}
   igrains = insertedGrains;
 
-  async findAll(): Promise<GrainDocument[]> {
-    const grains = await this.grainModel.find();
+  findAll(): Promise<GrainDocument[] | []> {
+    const grains = this.grainModel.find().exec();
 
     return grains;
   }
 
-  findOne(_id: string) {
+  findOne(_id: string): Promise<GrainDocument | Record<string, never>> {
     return this.grainModel.findById(_id).exec();
   }
 
@@ -32,17 +32,20 @@ export class GrainService {
     return await createdGrain.save();
   }
 
-  update(_id: string, updateFermentableDto: UpdateFermentableDto) {
+  update(
+    _id: string,
+    updateFermentableDto: UpdateFermentableDto,
+  ): Promise<GrainDocument> {
     return this.grainModel
       .findOneAndUpdate({ _id }, updateFermentableDto)
       .exec();
   }
 
-  remove(_id: string) {
+  remove(_id: string): Promise<GrainDocument> {
     return this.grainModel.findOneAndDelete({ _id }).exec();
   }
 
-  async insertMany(grains: Grain[]) {
+  async insertMany(grains: Grain[]): Promise<GrainDocument[] | []> {
     return await this.grainModel.insertMany(grains);
   }
 }

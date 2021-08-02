@@ -9,7 +9,7 @@ import { GrainSeed } from './grain.seed';
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: Grain.name, schema: GrainSchema }]),
-    CacheModule.register({ ttl: 100000000, max: 10000000000 }),
+    CacheModule.register({ ttl: 60, max: 60 * 60 * 10 }),
     CommandModule,
   ],
   controllers: [GrainController],

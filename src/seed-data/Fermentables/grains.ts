@@ -1,21 +1,7 @@
-type TGrains = {
-  name: string;
-  potential: number;
-  yield: number;
-  'coarse-fine-diff': number;
-  moisture: number;
-  color: number;
-  'recommend-mash': boolean;
-  'add-after-boil': boolean;
-  'diastatic-power': number;
-  'max-in-batch': number;
-  protein: number;
-  notes: string;
-};
-
-export default <TGrains[]>[
+const grains: TFermentables[] = [
   {
     name: 'Acid Malt',
+    type: 'Grain',
     potential: 1.027,
     yield: 0.587,
     'coarse-fine-diff': 0.015,
@@ -31,6 +17,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Amber Malt',
+    type: 'Grain',
     potential: 1.035,
     yield: 0.75,
     'coarse-fine-diff': 0.015,
@@ -46,6 +33,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Aromatic Malt',
+    type: 'Grain',
     potential: 1.036,
     yield: 0.78,
     'coarse-fine-diff': 0.015,
@@ -60,6 +48,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Barley, Flaked',
+    type: 'Grain',
     potential: 1.032,
     yield: 0.7,
     'coarse-fine-diff': 0.015,
@@ -75,6 +64,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Barley, Raw',
+    type: 'Grain',
     potential: 1.028,
     yield: 0.609,
     'coarse-fine-diff': 0.015,
@@ -90,6 +80,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Barley, Torrefied',
+    type: 'Grain',
     potential: 1.036,
     yield: 0.79,
     'coarse-fine-diff': 0.015,
@@ -105,6 +96,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Biscuit Malt',
+    type: 'Grain',
     potential: 1.036,
     yield: 0.79,
     'coarse-fine-diff': 0.015,
@@ -120,6 +112,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Black (Patent) Malt',
+    type: 'Grain',
     potential: 1.025,
     yield: 0.55,
     'coarse-fine-diff': 0.015,
@@ -135,6 +128,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Black Barley (Stout)',
+    type: 'Grain',
     potential: 1.025,
     yield: 0.55,
     'coarse-fine-diff': 0.015,
@@ -150,6 +144,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Brown Malt',
+    type: 'Grain',
     potential: 1.032,
     yield: 0.7,
     'coarse-fine-diff': 0.015,
@@ -165,6 +160,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Brumalt',
+    type: 'Grain',
     potential: 1.033,
     yield: 0.717,
     'coarse-fine-diff': 0.015,
@@ -180,6 +176,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Cara-Pils/Dextrine',
+    type: 'Grain',
     potential: 1.033,
     yield: 0.72,
     'coarse-fine-diff': 0.015,
@@ -194,6 +191,7 @@ export default <TGrains[]>[
   },
   {
     name: 'CaraFoam',
+    type: 'Grain',
     potential: 1.033,
     yield: 0.72,
     'coarse-fine-diff': 0.015,
@@ -208,6 +206,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Dextrine',
+    type: 'Grain',
     potential: 1.033,
     yield: 0.72,
     'coarse-fine-diff': 0.015,
@@ -222,6 +221,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Caraamber',
+    type: 'Grain',
     potential: 1.035,
     yield: 0.75,
     'coarse-fine-diff': 0.015,
@@ -236,6 +236,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Caramel/Crystal Malt - 10L',
+    type: 'Grain',
     potential: 1.035,
     yield: 0.75,
     'coarse-fine-diff': 0.015,
@@ -250,6 +251,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Caramel/Crystal Malt - 20L',
+    type: 'Grain',
     potential: 1.035,
     yield: 0.75,
     'coarse-fine-diff': 0.015,
@@ -264,6 +266,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Caramel/Crystal Malt - 30L',
+    type: 'Grain',
     potential: 1.035,
     yield: 0.75,
     'coarse-fine-diff': 0.015,
@@ -278,6 +281,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Caramel/Crystal Malt - 40L',
+    type: 'Grain',
     potential: 1.034,
     yield: 0.74,
     'coarse-fine-diff': 0.015,
@@ -292,6 +296,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Caramel/Crystal Malt - 60L',
+    type: 'Grain',
     potential: 1.034,
     yield: 0.74,
     'coarse-fine-diff': 0.015,
@@ -306,6 +311,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Caramel/Crystal Malt - 80L',
+    type: 'Grain',
     potential: 1.034,
     yield: 0.74,
     'coarse-fine-diff': 0.015,
@@ -320,6 +326,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Caramel/Crystal Malt - 90L',
+    type: 'Grain',
     potential: 1.034,
     yield: 0.74,
     'coarse-fine-diff': 0.015,
@@ -334,6 +341,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Caramel/Crystal Malt - 120L',
+    type: 'Grain',
     potential: 1.033,
     yield: 0.72,
     'coarse-fine-diff': 0.015,
@@ -348,6 +356,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Caramel/Crystal Malt - 140L',
+    type: 'Grain',
     potential: 1.033,
     yield: 0.72,
     'coarse-fine-diff': 0.015,
@@ -362,6 +371,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Caramel/Crystal Malt - 160L',
+    type: 'Grain',
     potential: 1.033,
     yield: 0.72,
     'coarse-fine-diff': 0.015,
@@ -376,6 +386,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Caramunich Malt',
+    type: 'Grain',
     potential: 1.033,
     yield: 0.717,
     'coarse-fine-diff': 0.015,
@@ -391,6 +402,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Carared',
+    type: 'Grain',
     potential: 1.035,
     yield: 0.75,
     'coarse-fine-diff': 0.015,
@@ -405,6 +417,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Caravienne Malt',
+    type: 'Grain',
     potential: 1.034,
     yield: 0.739,
     'coarse-fine-diff': 0.015,
@@ -420,6 +433,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Chocolate Malt',
+    type: 'Grain',
     potential: 1.028,
     yield: 0.6,
     'coarse-fine-diff': 0.015,
@@ -435,6 +449,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Chocolate Malt (UK)',
+    type: 'Grain',
     potential: 1.034,
     yield: 0.73,
     'coarse-fine-diff': 0.015,
@@ -450,6 +465,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Corn (Flaked)',
+    type: 'Grain',
     potential: 1.03,
     yield: 0.825,
     'coarse-fine-diff': 0.015,
@@ -464,6 +480,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Maris Otter Pale Malt',
+    type: 'Grain',
     potential: 1.037,
     yield: 0.8,
     'coarse-fine-diff': 0.013,
@@ -478,6 +495,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Melanoiden Malt',
+    type: 'Grain',
     potential: 1.037,
     yield: 0.8,
     'coarse-fine-diff': 0.013,
@@ -493,6 +511,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Mild Malt',
+    type: 'Grain',
     potential: 1.037,
     yield: 0.8,
     'coarse-fine-diff': 0.015,
@@ -508,6 +527,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Munich Malt',
+    type: 'Grain',
     potential: 1.037,
     yield: 0.8,
     'coarse-fine-diff': 0.013,
@@ -523,6 +543,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Munich Malt - 10L',
+    type: 'Grain',
     potential: 1.035,
     yield: 0.77,
     'coarse-fine-diff': 0.028,
@@ -538,6 +559,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Munich Malt - 20L',
+    type: 'Grain',
     potential: 1.035,
     yield: 0.75,
     'coarse-fine-diff': 0.028,
@@ -553,6 +575,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Oats, Flaked',
+    type: 'Grain',
     potential: 1.037,
     yield: 0.8,
     'coarse-fine-diff': 0.015,
@@ -568,6 +591,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Oats, Malted',
+    type: 'Grain',
     potential: 1.037,
     yield: 0.8,
     'coarse-fine-diff': 0.015,
@@ -583,6 +607,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Pale Malt (2 Row) - Belgium',
+    type: 'Grain',
     potential: 1.037,
     yield: 0.8,
     'coarse-fine-diff': 0.015,
@@ -597,6 +622,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Pale Malt (2 Row) - UK',
+    type: 'Grain',
     potential: 1.036,
     yield: 0.78,
     'coarse-fine-diff': 0.015,
@@ -611,6 +637,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Pale Malt (2 Row) - USA',
+    type: 'Grain',
     potential: 1.036,
     yield: 0.79,
     'coarse-fine-diff': 0.015,
@@ -625,6 +652,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Pale Malt (6 Row) - USA',
+    type: 'Grain',
     potential: 1.035,
     yield: 0.76,
     'coarse-fine-diff': 0.015,
@@ -639,6 +667,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Peat Smoked Malt',
+    type: 'Grain',
     potential: 1.034,
     yield: 0.74,
     'coarse-fine-diff': 0.015,
@@ -654,6 +683,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Pilsner (2 Row) - Belgium',
+    type: 'Grain',
     potential: 1.036,
     yield: 0.79,
     'coarse-fine-diff': 0.015,
@@ -668,6 +698,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Pilsner (2 Row) - Germany',
+    type: 'Grain',
     potential: 1.037,
     yield: 0.81,
     'coarse-fine-diff': 0.015,
@@ -682,6 +713,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Pilsner (2 Row) - UK',
+    type: 'Grain',
     potential: 1.036,
     yield: 0.78,
     'coarse-fine-diff': 0.015,
@@ -696,6 +728,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Rice, Flaked',
+    type: 'Grain',
     potential: 1.032,
     yield: 0.7,
     'coarse-fine-diff': 0.015,
@@ -711,6 +744,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Roasted Barley',
+    type: 'Grain',
     potential: 1.025,
     yield: 0.55,
     'coarse-fine-diff': 0.015,
@@ -726,6 +760,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Rye Malt',
+    type: 'Grain',
     potential: 1.029,
     yield: 0.63,
     'coarse-fine-diff': 0.015,
@@ -741,6 +776,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Rye, Flaked',
+    type: 'Grain',
     potential: 1.036,
     yield: 0.783,
     'coarse-fine-diff': 0.015,
@@ -756,6 +792,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Smoked Malt',
+    type: 'Grain',
     potential: 1.037,
     yield: 0.8,
     'coarse-fine-diff': 0.015,
@@ -771,6 +808,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Special B Malt',
+    type: 'Grain',
     potential: 1.03,
     yield: 0.652,
     'coarse-fine-diff': 0.015,
@@ -786,6 +824,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Special Roast',
+    type: 'Grain',
     potential: 1.033,
     yield: 0.72,
     'coarse-fine-diff': 0.015,
@@ -801,6 +840,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Toasted Malt',
+    type: 'Grain',
     potential: 1.033,
     yield: 0.717,
     'coarse-fine-diff': 0.015,
@@ -816,6 +856,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Victory Malt',
+    type: 'Grain',
     potential: 1.034,
     yield: 0.73,
     'coarse-fine-diff': 0.015,
@@ -831,6 +872,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Vienna Malt',
+    type: 'Grain',
     potential: 1.036,
     yield: 0.78,
     'coarse-fine-diff': 0.015,
@@ -846,6 +888,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Wheat Malt - Belgium',
+    type: 'Grain',
     potential: 1.037,
     yield: 0.81,
     'coarse-fine-diff': 0.015,
@@ -860,6 +903,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Dark Wheat Malt',
+    type: 'Grain',
     potential: 1.039,
     yield: 0.84,
     'coarse-fine-diff': 0.015,
@@ -875,6 +919,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Wheat Malt - Germany',
+    type: 'Grain',
     potential: 1.039,
     yield: 0.84,
     'coarse-fine-diff': 0.015,
@@ -889,6 +934,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Wheat, Flaked',
+    type: 'Grain',
     potential: 1.035,
     yield: 0.77,
     'coarse-fine-diff': 0.015,
@@ -904,6 +950,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Wheat, Roasted',
+    type: 'Grain',
     potential: 1.025,
     yield: 0.543,
     'coarse-fine-diff': 0.015,
@@ -919,6 +966,7 @@ export default <TGrains[]>[
   },
   {
     name: 'Wheat, Torrified',
+    type: 'Grain',
     potential: 1.036,
     yield: 0.79,
     'coarse-fine-diff': 0.015,
@@ -934,6 +982,7 @@ export default <TGrains[]>[
   },
   {
     name: 'White Wheat Malt',
+    type: 'Grain',
     potential: 1.04,
     yield: 0.86,
     'coarse-fine-diff': 0.022,
@@ -947,3 +996,5 @@ export default <TGrains[]>[
     notes: 'White wheat gives a malty flavor not available from raw wheat.',
   },
 ];
+
+export default grains;

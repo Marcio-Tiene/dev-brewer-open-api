@@ -4,7 +4,7 @@
 
 ## Description
 
-It's an api to proivide data to Brewery software tools
+It's an api to provide data to Brewery software tools
 
 ## How to create a mongo container to DevBrewerApi
 

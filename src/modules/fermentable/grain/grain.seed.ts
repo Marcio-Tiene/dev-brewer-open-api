@@ -23,6 +23,7 @@ export class GrainSeed {
       console.log(seededGrains);
       return;
     }
+    console.log(grains);
 
     console.log('Grains Documents is not empty');
   }

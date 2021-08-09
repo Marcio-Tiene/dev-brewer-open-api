@@ -11,22 +11,23 @@ import {
   Inject,
   UseGuards,
 } from '@nestjs/common';
-import { GrainService } from './grain.service';
-import { CreateFermentableDto } from '../dto/create-fermentable.dto';
-import { UpdateFermentableDto } from '../dto/update-fermentable.dto';
+import { FermentableService } from './fermentable.service';
+import { CreateFermentableDto } from './dto/create-fermentable.dto';
+import { UpdateFermentableDto } from './dto/update-fermentable.dto';
 import { ApiExcludeEndpoint, ApiSecurity, ApiTags } from '@nestjs/swagger';
 import { AdminKeyGuard } from 'src/guards/admin-key.guard';
 
 const { PUBLIC_API_KEY_NAME, ADMIN_API_KEY_NAME, NODE_ENV } = process.env;
 const isProdEnv = NODE_ENV === 'production';
 
-@ApiTags('Fermentables/Grains')
+@ApiTags('Fermentables')
 @ApiSecurity(PUBLIC_API_KEY_NAME)
 @Controller()
 @UseInterceptors(CacheInterceptor)
-export class GrainController {
+export class FermentableController {
   constructor(
-    @Inject(GrainService) private readonly grainService: GrainService,
+    @Inject(FermentableService)
+    private readonly fermentableService: FermentableService,
   ) {}
 
   @ApiExcludeEndpoint(isProdEnv)
@@ -34,17 +35,17 @@ export class GrainController {
   @ApiSecurity(ADMIN_API_KEY_NAME)
   @Post()
   create(@Body() createFermentableDto: CreateFermentableDto) {
-    return this.grainService.create(createFermentableDto);
+    return this.fermentableService.create(createFermentableDto);
   }
 
   @Get()
   findAll() {
-    return this.grainService.findAll();
+    return this.fermentableService.findAll();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.grainService.findOne(id);
+    return this.fermentableService.findOne(id);
   }
 
   @ApiExcludeEndpoint(isProdEnv)
@@ -55,13 +56,13 @@ export class GrainController {
     @Param('id') id: string,
     @Body() updateFermentableDto: UpdateFermentableDto,
   ) {
-    return this.grainService.update(id, updateFermentableDto);
+    return this.fermentableService.update(id, updateFermentableDto);
   }
   @ApiExcludeEndpoint(isProdEnv)
   @UseGuards(AdminKeyGuard)
   @ApiSecurity(ADMIN_API_KEY_NAME)
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.grainService.remove(id);
+    return this.fermentableService.remove(id);
   }
 }

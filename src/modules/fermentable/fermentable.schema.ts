@@ -12,6 +12,10 @@ export class Fermentable {
 
   @ApiProperty()
   @Prop()
+  type: FermentablesTypes;
+
+  @ApiProperty()
+  @Prop()
   potential: number;
 
   @ApiProperty()

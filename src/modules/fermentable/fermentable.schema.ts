@@ -10,7 +10,9 @@ export class Fermentable {
   @Prop()
   name: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    enum: ['Grain', 'Sugar', 'Extract', 'Dry Extract', 'Adjunct'],
+  })
   @Prop()
   type: FermentablesTypes;
 

@@ -12,8 +12,8 @@ export class FermentableService {
     private readonly fermentableModel: Model<FermentableDocument>,
   ) {}
 
-  findAll(): Promise<FermentableDocument[] | []> {
-    const fermentables = this.fermentableModel.find().exec();
+  find(query?: UpdateFermentableDto): Promise<FermentableDocument[] | []> {
+    const fermentables = this.fermentableModel.find(query).exec();
 
     return fermentables;
   }

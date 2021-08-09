@@ -17,7 +17,7 @@ export class FermentableSeed {
     autoExit: true,
   })
   async insertMany() {
-    const isDbEmpty = (await this.fermentableService.findAll()).length < 1;
+    const isDbEmpty = (await this.fermentableService.find()).length < 1;
 
     if (isDbEmpty) {
       const seededFermentables = await this.fermentableService.insertMany(

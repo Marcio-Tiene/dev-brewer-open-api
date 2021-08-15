@@ -28,8 +28,8 @@ export class FermentableController {
 
   @Get()
   @FermentablesQuery()
-  find(@Req() req: Request) {
-    const query: UpdateFermentableDto = req.query;
+  find(@Req() req: Request<FermentablesQuery>) {
+    const query = req.query;
 
     return this.fermentableService.find(query);
   }

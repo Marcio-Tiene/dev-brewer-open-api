@@ -20,3 +20,12 @@ declare type TFermentables = {
   protein: number;
   notes: string;
 };
+
+declare interface FermentablesQuery {
+  limit?: string;
+  page?: string;
+
+  name: string;
+  type: FermentablesTypes;
+  potential?: string;
+}

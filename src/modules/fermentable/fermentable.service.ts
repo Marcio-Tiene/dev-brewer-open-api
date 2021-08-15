@@ -3,17 +3,23 @@ import { InjectModel } from '@nestjs/mongoose';
 import { CreateFermentableDto } from './dto/create-fermentable.dto';
 import { UpdateFermentableDto } from './dto/update-fermentable.dto';
 import { Fermentable, FermentableDocument } from './fermentable.schema';
-import { Model } from 'mongoose';
+import { PaginateModel, PaginateResult } from 'mongoose';
 
 @Injectable()
 export class FermentableService {
   constructor(
     @InjectModel(Fermentable.name)
-    private readonly fermentableModel: Model<FermentableDocument>,
+    private readonly fermentableModel: PaginateModel<FermentableDocument>,
   ) {}
 
-  find(query?: UpdateFermentableDto): Promise<FermentableDocument[] | []> {
-    const fermentables = this.fermentableModel.find(query).exec();
+  async find(query?: any): Promise<PaginateResult<Fermentable>> {
+    const { page = '1', limit = '10', ...dbquery } = query;
+
+    const limitRange = limit > 100 ? '100' : limit;
+    const fermentables = await this.fermentableModel.paginate(dbquery, {
+      page: Number(page),
+      limit: Number(limitRange),
+    });
 
     return fermentables;
   }

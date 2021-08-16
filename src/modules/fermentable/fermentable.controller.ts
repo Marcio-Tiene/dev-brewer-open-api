@@ -11,7 +11,6 @@ import { FermentableService } from './fermentable.service';
 
 import { ApiSecurity, ApiTags } from '@nestjs/swagger';
 import { Request } from 'express';
-import { UpdateFermentableDto } from './dto/update-fermentable.dto';
 import { FermentablesQuery } from './fermentables.decorator';
 
 const { PUBLIC_API_KEY_NAME } = process.env;

@@ -29,6 +29,9 @@ describe('ApiKeyGuard', () => {
     app = (await createTestModule(new ApiKeyGuard())).createNestApplication();
     await app.init();
   });
+  afterEach(async () => {
+    await app.close();
+  });
   it('should be defined', () => {
     expect(new ApiKeyGuard()).toBeDefined();
   });

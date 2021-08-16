@@ -1,10 +1,7 @@
 import { applyDecorators } from '@nestjs/common';
-import { ApiOkResponse, ApiProperty, ApiQuery } from '@nestjs/swagger';
-import { CreateFermentableDto } from './dto/create-fermentable.dto';
-import { PaginateModel, PaginateResult } from 'mongoose';
-import { Fermentable, FermentableDocument } from './fermentable.schema';
-import { InjectModel } from '@nestjs/mongoose';
+import { ApiQuery } from '@nestjs/swagger';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const response = {
   docs: [
     {

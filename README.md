@@ -75,14 +75,14 @@ Modules may have a seed command avaliable, to check it, go in the module folder 
 ```javascript
 // src/modules/fermentable/grain/grain.seed.ts
 @Command({
-command: 'seed:grains', ...}
+command: 'seed:fermentables', ...}
 
 ```
 
 and run the script with the value of the command like this:
 
 ```bash
-yarn run:command seed:grains
+yarn run:command seed:fermentables
 ```
 
 ## Support

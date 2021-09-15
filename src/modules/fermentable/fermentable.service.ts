@@ -29,11 +29,21 @@ export class FermentableService {
   }
 
   async create(
-    createFermentableDto: CreateFermentableDto,
-  ): Promise<FermentableDocument> {
-    const createdFermentable = new this.fermentableModel(createFermentableDto);
+    createFermentableDto: CreateFermentableDto | CreateFermentableDto[],
+  ): Promise<FermentableDocument | FermentableDocument[]> {
+    if (!Array.isArray(createFermentableDto)) {
+      const createdFermentable = new this.fermentableModel(
+        createFermentableDto,
+      );
 
-    return await createdFermentable.save();
+      return await createdFermentable.save();
+    }
+
+    const createdFermentables = await this.fermentableModel.create(
+      createFermentableDto,
+    );
+
+    return createdFermentables;
   }
 
   update(
@@ -47,6 +57,9 @@ export class FermentableService {
 
   remove(_id: string): Promise<FermentableDocument> {
     return this.fermentableModel.findOneAndDelete({ _id }).exec();
+  }
+  async deleteAll() {
+    return await this.fermentableModel.deleteMany({});
   }
 
   async insertMany(

@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import * as dotenv from 'dotenv';
 const data = dotenv.config();
 
-const apiKeyHeader = data.parsed.PUBLIC_API_KEY_NAME;
-const apiKey = data.parsed.PUBLIC_API_KEY_VALUE;
+const apiKeyHeader = data.parsed?.PUBLIC_API_KEY_NAME as string;
+const apiKey = data.parsed?.PUBLIC_API_KEY_VALUE;
 
 @Injectable()
 export class ApiKeyGuard implements CanActivate {

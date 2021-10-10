@@ -83,9 +83,9 @@ describe('FermentableService', () => {
 
     const searchedFermentable = await service.findOne(createdFermentable._id);
 
-    expect(searchedFermentable.name).toBe(fermentableToCreate.name);
+    expect(searchedFermentable?.name).toBe(fermentableToCreate.name);
 
-    expect(searchedFermentable.toObject()).toMatchObject(
+    expect(searchedFermentable?.toObject()).toMatchObject(
       createdFermentable.toObject(),
     );
   });

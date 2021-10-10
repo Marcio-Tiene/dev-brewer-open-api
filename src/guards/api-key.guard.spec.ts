@@ -8,10 +8,10 @@ import * as request from 'supertest';
 import * as dotenv from 'dotenv';
 const data = dotenv.config();
 
-const apiKeyHeader = data.parsed.PUBLIC_API_KEY_NAME;
-const apiKey = data.parsed.PUBLIC_API_KEY_VALUE;
+const apiKeyHeader = data?.parsed?.PUBLIC_API_KEY_NAME as string;
+const apiKey = data?.parsed?.PUBLIC_API_KEY_VALUE as string;
 
-async function createTestModule(guard) {
+async function createTestModule(guard: any) {
   return await Test.createTestingModule({
     imports: [AppModule],
     providers: [

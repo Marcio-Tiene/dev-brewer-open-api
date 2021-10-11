@@ -16,7 +16,7 @@ import { FermentablesQuery } from './fermentables.decorator';
 const { PUBLIC_API_KEY_NAME } = process.env;
 
 @ApiTags('Fermentables')
-@ApiSecurity(PUBLIC_API_KEY_NAME)
+@ApiSecurity(PUBLIC_API_KEY_NAME || '')
 @Controller()
 @UseInterceptors(CacheInterceptor)
 export class FermentableController {

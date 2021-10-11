@@ -24,7 +24,7 @@ export class FermentableService {
     return fermentables;
   }
 
-  findOne(_id: string): Promise<FermentableDocument | Record<string, never>> {
+  findOne(_id: string): Promise<FermentableDocument | null> {
     return this.fermentableModel.findById(_id).exec();
   }
 
@@ -49,13 +49,13 @@ export class FermentableService {
   update(
     _id: string,
     updateFermentableDto: UpdateFermentableDto,
-  ): Promise<FermentableDocument> {
+  ): Promise<FermentableDocument | null> {
     return this.fermentableModel
       .findOneAndUpdate({ _id }, updateFermentableDto)
       .exec();
   }
 
-  remove(_id: string): Promise<FermentableDocument> {
+  remove(_id: string): Promise<FermentableDocument | null> {
     return this.fermentableModel.findOneAndDelete({ _id }).exec();
   }
   async deleteAll() {

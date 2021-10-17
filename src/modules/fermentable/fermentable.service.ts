@@ -15,8 +15,21 @@ export class FermentableService {
   async find(query?: any): Promise<PaginateResult<Fermentable>> {
     const { page = '1', limit = '10', ...dbquery } = query || {};
 
+
+    const { name } = dbquery || {};
+
+
     const limitRange = limit > 100 ? '100' : limit;
-    const fermentables = await this.fermentableModel.paginate(dbquery, {
+
+    let finalQuery: any;
+
+    if (name) {
+      finalQuery = { name: { $regex: name, $options: 'i' } };
+    } else {
+      finalQuery = dbquery;
+    }
+
+    const fermentables = await this.fermentableModel.paginate(finalQuery, {
       page: Number(page),
       limit: Number(limitRange),
     });

@@ -1,47 +1,52 @@
 import { INestApplication } from '@nestjs/common';
-import { APP_GUARD } from '@nestjs/core';
-import { Test } from '@nestjs/testing';
-import { AppModule } from '../../src/app.module';
+import { Test, TestingModule } from '@nestjs/testing';
 import { ApiKeyGuard } from './api-key.guard';
 import * as request from 'supertest';
 
 import * as dotenv from 'dotenv';
+
+import { TestController } from '../../test/fixtures/test-controller';
+import { APP_GUARD } from '@nestjs/core';
 const data = dotenv.config();
 
-const apiKeyHeader = data?.parsed?.PUBLIC_API_KEY_NAME as string;
-const apiKey = data?.parsed?.PUBLIC_API_KEY_VALUE as string;
-
-async function createTestModule(guard: any) {
-  return await Test.createTestingModule({
-    imports: [AppModule],
-    providers: [
-      {
-        provide: APP_GUARD,
-        useValue: guard,
-      },
-    ],
-  }).compile();
-}
+const apiKeyHeader = data.parsed?.PUBLIC_API_KEY_NAME || 'test-header';
+const apiKey = data.parsed?.PUBLIC_API_KEY_VALUE || 'test-sercret';
 
 describe('ApiKeyGuard', () => {
   let app: INestApplication;
+
+  let module: TestingModule;
+
+  beforeAll(async () => {
+    module = await Test.createTestingModule({
+      imports: [TestController],
+      controllers: [TestController],
+      providers: [{ provide: APP_GUARD, useClass: ApiKeyGuard }],
+    }).compile();
+  });
+
   beforeEach(async () => {
-    app = (await createTestModule(new ApiKeyGuard())).createNestApplication();
+    app = module.createNestApplication();
     await app.init();
   });
+
   afterEach(async () => {
     await app.close();
+  });
+
+  afterAll(async () => {
+    await module.close();
   });
   it('should be defined', () => {
     expect(new ApiKeyGuard()).toBeDefined();
   });
 
   it('should not let me pass', async () => {
-    return await request(app.getHttpServer()).get('/fermentables').expect(403);
+    return await request(app.getHttpServer()).get('/').expect(403);
   });
   it('should let me pass', async () => {
     return await request(app.getHttpServer())
-      .get('/fermentables')
+      .get('/')
       .set({
         [apiKeyHeader]: apiKey,
       })

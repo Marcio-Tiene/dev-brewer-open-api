@@ -18,7 +18,7 @@ describe('FermentableService', () => {
   beforeAll(async () => {
     mongod = await MongoMemoryServer.create({
       instance: {
-        dbName: 'service-test',
+        dbName: 'fermentable-service-test',
       },
     });
     module = await Test.createTestingModule({

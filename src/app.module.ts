@@ -5,10 +5,11 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ApiKeyGuard } from './guards/api-key.guard';
 import { FermentableModule } from './modules/fermentable/fermentable.module';
 
+const MongoUrl = (process.env.MONGODOCKER || process.env.MONGODB) as string;
 @Module({
   imports: [
     ConfigModule.forRoot({ envFilePath: ['.env'], isGlobal: true }),
-    MongooseModule.forRoot(process.env.MONGODB),
+    MongooseModule.forRoot(MongoUrl),
     FermentableModule,
   ],
   providers: [{ provide: APP_GUARD, useClass: ApiKeyGuard }],

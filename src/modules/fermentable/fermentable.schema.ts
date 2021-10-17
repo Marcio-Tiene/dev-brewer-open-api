@@ -9,21 +9,21 @@ export type FermentableDocument = Fermentable & Document;
 export class Fermentable {
   @ApiProperty()
   @Prop()
-  name: string;
+  name!: string;
 
   @ApiProperty({
     enum: ['Grain', 'Sugar', 'Extract', 'Dry Extract', 'Adjunct'],
   })
   @Prop()
-  type: FermentablesTypes;
+  type!: FermentablesTypes;
 
   @ApiProperty()
   @Prop()
-  potential: number;
+  potential!: number;
 
   @ApiProperty()
   @Prop()
-  yield: number;
+  yield!: number;
 
   @ApiProperty()
   @Prop()
@@ -31,11 +31,11 @@ export class Fermentable {
 
   @ApiProperty()
   @Prop()
-  moisture: number;
+  moisture!: number;
 
   @ApiProperty()
   @Prop()
-  color: number;
+  color!: number;
 
   @ApiProperty()
   @Prop()
@@ -55,11 +55,11 @@ export class Fermentable {
 
   @ApiProperty()
   @Prop()
-  protein: number;
+  protein!: number;
 
   @ApiProperty()
   @Prop()
-  notes: string;
+  notes!: string;
 }
 
 export const FermentableSchema =

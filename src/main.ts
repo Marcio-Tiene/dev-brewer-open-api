@@ -54,10 +54,10 @@ async function serverInit() {
     SwaggerModule.setup('/v1/api', app, document, swaggerCustomOptions);
     app.enableCors();
     app.use(helmet());
-    await app.listen(PORT || 3000);
-    console.log(`Server started on port ${PORT || '3000'}`);
-  } catch (err) {
-    console.error(`Error Starting server due ${err.message}`);
+    await app.listen(PORT || 4500);
+    console.log(`Server started on port ${PORT || '4500'}`);
+  } catch (err: any) {
+    console.error(`Error Starting server due ${err?.message}`);
   }
 }
 serverInit();

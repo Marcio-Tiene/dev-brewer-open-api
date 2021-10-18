@@ -15,9 +15,7 @@ export class FermentableService {
   async find(query?: any): Promise<PaginateResult<Fermentable>> {
     const { page = '1', limit = '10', ...dbquery } = query || {};
 
-
     const { name } = dbquery || {};
-
 
     const limitRange = limit > 100 ? '100' : limit;
 

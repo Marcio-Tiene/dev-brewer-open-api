@@ -19,15 +19,10 @@ export class FermentableService {
 
     const limitRange = limit > 100 ? '100' : limit;
 
-    let finalQuery: any;
-
     if (name) {
-      finalQuery = { name: { $regex: name, $options: 'i' } };
-    } else {
-      finalQuery = dbquery;
+      dbquery.name = { $regex: name, $options: 'i' };
     }
-
-    const fermentables = await this.fermentableModel.paginate(finalQuery, {
+    const fermentables = await this.fermentableModel.paginate(dbquery, {
       page: Number(page),
       limit: Number(limitRange),
     });

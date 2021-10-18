@@ -3,7 +3,7 @@ import { Inject, Injectable } from '@nestjs/common';
 
 import grains from '../../seed-data/Fermentables/grains';
 import { FermentableService } from './fermentable.service';
-import sugars from 'src/seed-data/Fermentables/sugar';
+import sugars from '../../seed-data/Fermentables/sugar';
 
 @Injectable()
 export class FermentableSeed {

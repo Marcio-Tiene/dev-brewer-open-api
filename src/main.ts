@@ -13,7 +13,7 @@ const { PORT, PUBLIC_API_KEY_NAME } = process.env;
 
 async function serverInit() {
   try {
-    const app = await NestFactory.create(AppModule);
+    const app = await NestFactory.create(AppModule.register());
     const swaggerConfig = new DocumentBuilder()
       .setTitle('DevBrewer Api')
       .setDescription("It's an api to proivide data to Brewery software tools")

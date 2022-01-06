@@ -4,6 +4,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import grains from '../../seed-data/Fermentables/grains';
 import { FermentableService } from './fermentable.service';
 import sugars from '../../seed-data/Fermentables/sugar';
+import extracts from '../../seed-data/Fermentables/extracts';
 
 @Injectable()
 export class FermentableSeed {
@@ -40,6 +41,17 @@ export class FermentableSeed {
       console.log(seededFermentables);
     } else {
       console.log('Sugars types is not empty');
+    }
+
+    const hasNoExtracts =
+      (await this.fermentableService.find({ type: 'Extract' })).total === 0;
+    if (hasNoExtracts) {
+      const seededFermentables = await this.fermentableService.insertMany(
+        extracts,
+      );
+      console.log(seededFermentables);
+    } else {
+      console.log('Extracts types is not empty');
     }
   }
 }

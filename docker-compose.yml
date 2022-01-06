@@ -27,6 +27,8 @@ services:
       - /usr/app/node_modules 
     environment:
       MONGODOCKER: mongodb://${MONGODB_DB}-mongodb:27017/${MONGODB_DB}  
+      PUBLIC_API_KEY_NAME: ${PUBLIC_API_KEY_NAME}
+      PUBLIC_API_KEY_VALUE: ${PUBLIC_API_KEY_VALUE}
     restart: unless-stopped    
 
 

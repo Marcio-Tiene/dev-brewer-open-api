@@ -5,6 +5,8 @@ import grains from '../../seed-data/Fermentables/grains';
 import { FermentableService } from './fermentable.service';
 import sugars from '../../seed-data/Fermentables/sugar';
 import extracts from '../../seed-data/Fermentables/extracts';
+import adjuncts from '../../seed-data/Fermentables/adjuncts';
+import dryExtracts from '../../seed-data/Fermentables/dry-extracts';
 
 @Injectable()
 export class FermentableSeed {
@@ -19,14 +21,12 @@ export class FermentableSeed {
     autoExit: true,
   })
   async insertMany() {
+    let fermentablesToSeed: TFermentables[] = [];
     const isNoGrains =
       (await this.fermentableService.find({ type: 'Grain' })).total === 0;
 
     if (isNoGrains) {
-      const seededFermentables = await this.fermentableService.insertMany(
-        grains,
-      );
-      console.log(seededFermentables);
+      fermentablesToSeed = [...fermentablesToSeed, ...grains];
     } else {
       console.log('Grains types is not empty');
     }
@@ -35,23 +35,40 @@ export class FermentableSeed {
       (await this.fermentableService.find({ type: 'Sugar' })).total === 0;
 
     if (isNoSugars) {
-      const seededFermentables = await this.fermentableService.insertMany(
-        sugars,
-      );
-      console.log(seededFermentables);
+      fermentablesToSeed = [...fermentablesToSeed, ...sugars];
     } else {
       console.log('Sugars types is not empty');
     }
 
     const hasNoExtracts =
       (await this.fermentableService.find({ type: 'Extract' })).total === 0;
+
     if (hasNoExtracts) {
-      const seededFermentables = await this.fermentableService.insertMany(
-        extracts,
-      );
-      console.log(seededFermentables);
+      fermentablesToSeed = [...fermentablesToSeed, ...extracts];
     } else {
       console.log('Extracts types is not empty');
     }
+
+    const hasNoDryExtracts =
+      (await this.fermentableService.find({ type: 'Dry Extract' })).total === 0;
+
+    if (hasNoDryExtracts) {
+      fermentablesToSeed = [...fermentablesToSeed, ...dryExtracts];
+    } else {
+      console.log('Dry Extracts types is not empty');
+    }
+    const hasNoAdjuncts =
+      (await this.fermentableService.find({ type: 'Adjunct' })).total === 0;
+
+    if (hasNoAdjuncts) {
+      fermentablesToSeed = [...fermentablesToSeed, ...adjuncts];
+    } else {
+      console.log('Adjunct types is not empty');
+    }
+
+    const seededFermentables = await this.fermentableService.insertMany(
+      fermentablesToSeed,
+    );
+    console.log(seededFermentables);
   }
 }

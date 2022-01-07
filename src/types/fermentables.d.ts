@@ -21,10 +21,7 @@ declare type TFermentables = {
   notes: string;
 };
 
-declare interface FermentablesQuery {
-  limit?: string;
-  page?: string;
-
+declare interface FermentablesQuery extends IPaginateQuery {
   name: string;
   type: FermentablesTypes;
   potential?: string;

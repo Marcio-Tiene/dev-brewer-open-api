@@ -12,17 +12,23 @@ export class FermentableService {
     private readonly fermentableModel: PaginateModel<FermentableDocument>,
   ) {}
 
-  async find(query?: any): Promise<PaginateResult<Fermentable>> {
-    const { page = '1', limit = '10', ...dbquery } = query;
+  async find(query?: FermentablesQuery): Promise<PaginateResult<Fermentable>> {
+    const { page = '1', limit = 10, ...dbquery } = query as FermentablesQuery;
 
-    const { name } = dbquery || {};
+    const { name: queryStringName } = dbquery || {};
+
+    let finalQuery: any = { ...dbquery };
 
     const limitRange = limit > 100 ? '100' : limit;
 
-    if (name) {
-      dbquery.name = { $regex: name, $options: 'i' };
+    if (queryStringName) {
+      finalQuery = {
+        ...finalQuery,
+        name: { $regex: queryStringName, $options: 'i' },
+      };
     }
-    const fermentables = await this.fermentableModel.paginate(dbquery, {
+
+    const fermentables = await this.fermentableModel.paginate(finalQuery, {
       page: Number(page),
       limit: Number(limitRange),
     });

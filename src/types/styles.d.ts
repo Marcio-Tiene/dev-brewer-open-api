@@ -1,4 +1,4 @@
-declare type TCategory = {
+declare type TStyle = {
   category: TBjcp2015Categories;
   'carb-min': number;
   'fg-max': number;

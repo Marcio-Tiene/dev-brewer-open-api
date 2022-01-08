@@ -21,3 +21,9 @@ declare type TCategory = {
   profile: string;
   'ibu-min': number;
 };
+
+declare interface StylesQuery extends IPaginateQuery {
+  name?: string;
+  type?: string;
+  potential?: string;
+}

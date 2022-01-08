@@ -1,5 +1,6 @@
 import { applyDecorators } from '@nestjs/common';
 import { ApiQuery } from '@nestjs/swagger';
+import { fermentablesTypesArray } from 'src/constants/fermentables';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const response = {
@@ -37,7 +38,7 @@ export function FermentablesQuery() {
     ApiQuery({
       name: 'type',
       required: false,
-      enum: ['Grain', 'Sugar', 'Extract', 'Dry Extract', 'Adjunct'],
+      enum: fermentablesTypesArray,
     }),
     ApiQuery({
       name: 'name',

@@ -2,6 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ApiProperty } from '@nestjs/swagger';
 import { Document } from 'mongoose';
 import * as mongoosePaginate from 'mongoose-paginate';
+import { fermentablesTypesArray } from 'src/constants/fermentables';
 
 export type FermentableDocument = Fermentable & Document;
 
@@ -12,7 +13,7 @@ export class Fermentable {
   name!: string;
 
   @ApiProperty({
-    enum: ['Grain', 'Sugar', 'Extract', 'Dry Extract', 'Adjunct'],
+    enum: fermentablesTypesArray,
   })
   @Prop()
   type!: FermentablesTypes;

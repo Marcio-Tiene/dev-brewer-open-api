@@ -2,6 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ApiProperty } from '@nestjs/swagger';
 import { Document } from 'mongoose';
 import * as mongoosePaginate from 'mongoose-paginate';
+import { bjcp2015CategoriesArray } from 'src/constants/bjcp2015';
 
 export type StyleDocument = Style & Document;
 
@@ -60,42 +61,7 @@ export class Style {
   notes!: string;
 
   @ApiProperty({
-    enum: [
-      'Alternative Fermentables Beer',
-      'Amber And Brown American Beer',
-      'Amber Bitter European Beer',
-      'Amber Malty European Lager',
-      'American Porter And Stout',
-      'American Wild Ale',
-      'Belgian Ale',
-      'British Bitter',
-      'Brown British Beer',
-      'Czech Lager',
-      'Dark British Beer',
-      'Dark European Lager',
-      'European Sour Ale',
-      'Fruit Beer',
-      'German Wheat Beer',
-      'Historic Beer',
-      'International Lager',
-      'Ipa',
-      'Irish Beer',
-      'Pale American Ale',
-      'Pale Bitter European Beer',
-      'Pale Commonwealth Beer',
-      'Pale Malty European Lager',
-      'Scottish Ale',
-      'Smoked Beer',
-      'Specialty Beer',
-      'Spiced Beer',
-      'Standard American Beer',
-      'Strong American Ale',
-      'Strong Belgian Ale',
-      'Strong British Ale',
-      'Strong European Beer',
-      'Trappist Ale',
-      'Wood Beer',
-    ],
+    enum: bjcp2015CategoriesArray,
   })
   @Prop()
   category!: TBjcp2015Categories;

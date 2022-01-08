@@ -1,5 +1,6 @@
 import { applyDecorators } from '@nestjs/common';
 import { ApiQuery } from '@nestjs/swagger';
+import { bjcp2015CategoriesArray } from 'src/constants/bjcp2015';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const response = {
@@ -43,42 +44,7 @@ export function StylesQuery() {
     ApiQuery({
       name: 'category',
       required: false,
-      enum: [
-        'Alternative Fermentables Beer',
-        'Amber And Brown American Beer',
-        'Amber Bitter European Beer',
-        'Amber Malty European Lager',
-        'American Porter And Stout',
-        'American Wild Ale',
-        'Belgian Ale',
-        'British Bitter',
-        'Brown British Beer',
-        'Czech Lager',
-        'Dark British Beer',
-        'Dark European Lager',
-        'European Sour Ale',
-        'Fruit Beer',
-        'German Wheat Beer',
-        'Historic Beer',
-        'International Lager',
-        'Ipa',
-        'Irish Beer',
-        'Pale American Ale',
-        'Pale Bitter European Beer',
-        'Pale Commonwealth Beer',
-        'Pale Malty European Lager',
-        'Scottish Ale',
-        'Smoked Beer',
-        'Specialty Beer',
-        'Spiced Beer',
-        'Standard American Beer',
-        'Strong American Ale',
-        'Strong Belgian Ale',
-        'Strong British Ale',
-        'Strong European Beer',
-        'Trappist Ale',
-        'Wood Beer',
-      ],
+      enum: bjcp2015CategoriesArray,
     }),
     ApiQuery({
       name: 'name',

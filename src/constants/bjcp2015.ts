@@ -1,4 +1,4 @@
-export const bjcp2015CategoriesArray: string[] = [
+export const bjcp2015CategoriesArray: TBjcp2015Categories[] = [
   'Alternative Fermentables Beer',
   'Amber And Brown American Beer',
   'Amber Bitter European Beer',

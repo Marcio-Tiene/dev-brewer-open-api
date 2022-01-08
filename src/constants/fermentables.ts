@@ -1,4 +1,4 @@
-export const fermentablesTypesArray: string[] = [
+export const fermentablesTypesArray: FermentablesTypes[] = [
   'Grain',
   'Sugar',
   'Extract',

@@ -25,5 +25,6 @@ declare type TStyle = {
 declare interface StylesQuery extends IPaginateQuery {
   name?: string;
   type?: string;
+  category?: TBjcp2015Categories;
   potential?: string;
 }

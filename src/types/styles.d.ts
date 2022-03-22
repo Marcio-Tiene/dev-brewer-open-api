@@ -27,4 +27,5 @@ declare interface StylesQuery extends IPaginateQuery {
   type?: string;
   category?: TBjcp2015Categories;
   potential?: string;
+  offset?: number;
 }

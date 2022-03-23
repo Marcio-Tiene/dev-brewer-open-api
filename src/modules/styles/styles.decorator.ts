@@ -1,5 +1,5 @@
 import { applyDecorators } from '@nestjs/common';
-import { ApiQuery } from '@nestjs/swagger';
+import { ApiQuery, ApiOkResponse } from '@nestjs/swagger';
 import { bjcp2015CategoriesArray } from 'src/constants/bjcp2015';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -35,12 +35,6 @@ const response = {
 
 export function StylesQuery() {
   return applyDecorators(
-    ApiQuery({
-      name: 'type',
-      required: false,
-      enum: ['Grain', 'Sugar', 'Extract', 'Dry Extract', 'Adjunct'],
-    }),
-
     ApiQuery({
       name: 'category',
       required: false,

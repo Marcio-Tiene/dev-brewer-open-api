@@ -7,7 +7,7 @@ import {
   SwaggerCustomOptions,
   SwaggerDocumentOptions,
 } from '@nestjs/swagger';
-import * as helmet from 'helmet';
+import helmet from 'helmet';
 
 const { PORT, PUBLIC_API_KEY_NAME } = process.env;
 

@@ -23,8 +23,11 @@ export class AppModule {
     return {
       module: AppModule,
       imports: [
-        ConfigModule.forRoot({ envFilePath: ['.env'], isGlobal: true }),
-        MongooseModule.forRoot(mongoUri),
+        ConfigModule.forRoot({ isGlobal: true }),
+        MongooseModule.forRoot(mongoUri, {
+          useNewUrlParser: true,
+          useUnifiedTopology: true,
+        }),
         FermentableModule,
         StyleModule,
       ],

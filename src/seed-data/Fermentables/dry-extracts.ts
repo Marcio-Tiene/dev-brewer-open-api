@@ -10,9 +10,7 @@ const defaultThings = {
   protein: 0,
 };
 
-// (defn ^:private build-extract
-//   [extract-key extract-data]
-//   {extract-key (merge extract-data extract-defaults)})
+
 const dryExtracts: TFermentables[] = [
   {
     name: 'Amber Dry Extract',

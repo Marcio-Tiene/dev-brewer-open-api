@@ -14,7 +14,7 @@ declare type TBjcp2015Categories =
   | 'European Sour Ale'
   | 'Fruit Beer'
   | 'German Wheat Beer'
-  | 'Historic Beer'
+  | 'Historical Beer'
   | 'International Lager'
   | 'Ipa'
   | 'Irish Beer'

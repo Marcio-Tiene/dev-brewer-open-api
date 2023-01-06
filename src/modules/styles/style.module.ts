@@ -16,7 +16,7 @@ import { StyleService } from './style.service';
         module: StyleModule,
       },
     ]),
-    CacheModule.register({ ttl: 60, max: 60 * 60 * 10 }),
+    CacheModule.register({ ttl: 60, max: 60 * 60 * 10, isGlobal: true }),
     CommandModule,
   ],
   controllers: [StyleController],

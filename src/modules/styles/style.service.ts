@@ -19,7 +19,7 @@ export class StyleService {
 
     let finalQuery: any = { ...dbquery };
 
-    const limitRange = limit > 100 ? '100' : limit;
+    const limitRange = limit > 200 ? '200' : limit;
 
     if (queryStringName) {
       finalQuery = {
@@ -31,6 +31,7 @@ export class StyleService {
     const styles = await this.styleModel.paginate(finalQuery, {
       page: Number(page),
       limit: Number(limitRange),
+      select: '-__v -createdAt -updatedAt',
     });
 
     return styles;
